@@ -1,8 +1,8 @@
-package pl.borntocode.crud;
+package pl.borntocode.tasker;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GameRepository extends JpaRepository<Game, Long> {
+public interface TaskRepository extends JpaRepository<Task, Long> {
 }

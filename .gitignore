@@ -4,8 +4,9 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-src/main/resources/static/
-src/main/resources/testdb.mv.db
+
+### RESOURCES ###
+./src/main/resources/*.db
 
 ### STS ###
 .apt_generated

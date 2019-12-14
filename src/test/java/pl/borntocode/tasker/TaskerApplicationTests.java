@@ -1,10 +1,10 @@
-package pl.borntocode.crud;
+package pl.borntocode.tasker;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudApplicationTests {
+class TaskerApplicationTests {
 
 	@Test
 	void contextLoads() {
