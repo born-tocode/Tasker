@@ -1,7 +1,6 @@
 package pl.borntocode.tasker;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,13 +9,12 @@ import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-@Getter
-@Setter
+@Data
 @Entity
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long actionId;
     private String task;
     private Date fromDate;

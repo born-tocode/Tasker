@@ -6,8 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
-import java.util.List;
+import pl.borntocode.tasker.data.TaskRepository;
 
 @Slf4j
 @Controller
@@ -18,7 +17,7 @@ public class TaskController {
     private TaskRepository taskRepository;
 
     @GetMapping("/alltasks")
-    public List<Task> retrieveAllTasks() {
+    public Iterable<Task> retrieveAllTasks() {
         return taskRepository.findAll();
     }
 
