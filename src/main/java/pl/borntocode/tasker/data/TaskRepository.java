@@ -6,4 +6,6 @@ import pl.borntocode.tasker.Task;
 
 @Repository
 public interface TaskRepository extends CrudRepository<Task, Long> {
+
+    Task findByTaskContains(String string);
 }

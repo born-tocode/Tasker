@@ -15,7 +15,8 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long actionId;
+    private Long Id;
+
     private String task;
     private Date fromDate;
     private Date dueDate;
