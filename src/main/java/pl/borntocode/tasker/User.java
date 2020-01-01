@@ -21,7 +21,7 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class User implements UserDetails {
 
-    private static final long SERIAL_VERSION_UID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
