@@ -6,7 +6,8 @@ build/
 !**/src/test/**
 
 ### RESOURCES ###
-./src/main/resources/*.db
+src/main/resources/*.trace.db
+src/main/resources/*.lock.db
 
 ### STS ###
 .apt_generated
