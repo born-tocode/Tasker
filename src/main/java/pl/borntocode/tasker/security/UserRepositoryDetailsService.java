@@ -9,12 +9,12 @@ import pl.borntocode.tasker.User;
 import pl.borntocode.tasker.data.UserRepository;
 
 @Service
-public class UserRepositoryUserDetailsService implements UserDetailsService {
+public class UserRepositoryDetailsService implements UserDetailsService {
 
     private UserRepository userRepo;
 
     @Autowired
-    public UserRepositoryUserDetailsService(UserRepository userRepo) {
+    public UserRepositoryDetailsService(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
