@@ -3,11 +3,16 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tasker Repository</title>
+    <template resource="./default.css"></template>
 </head>
 <body>
 <div id="defaultFont">
 
     <h1>Tasker Repository</h1>
+
+    <a th:href="@{/signup}">Sign-up</a><br/>
+
+    <a th:href="@{/signin}">Sign-in</a><br/>
 
 </div>
 </body>
