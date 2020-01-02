@@ -1,7 +1,8 @@
-package pl.borntocode.tasker;
+package pl.borntocode.tasker.security;
 
 import lombok.Data;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import pl.borntocode.tasker.User;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
