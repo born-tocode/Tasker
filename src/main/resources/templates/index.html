@@ -3,17 +3,30 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tasker Repository</title>
-    <template resource="./default.css"></template>
 </head>
-<body>
-<div id="defaultFont">
-
-    <h1>Tasker Repository</h1>
-
-    <a th:href="@{/signup}">Sign-up</a><br/>
-
-    <a th:href="@{/signin}">Sign-in</a><br/>
-
-</div>
+<body style="font-family: 'Droid Sans Mono',monospace; font-size: smaller">
+<table>
+    <tr>
+        <td><h2>Tasker Repository</h2></td>
+    </tr>
+    <tr>
+        <td>
+            <a   th:href="@{/signup}">Sign-up</a><br/>
+        </td>
+    </tr>
+    <tr>
+        <td>or..<br/></td>
+    </tr>
+    <tr>
+        <td>
+            <a th:href="@{/signin}">Sign-in</a><br/>
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+<footer style="font-size: x-small;vertical-align: bottom">
+    &copy; 2020 by born to code
+</footer>
 </body>
 </html>

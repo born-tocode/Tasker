@@ -4,26 +4,51 @@
 <head>
     <title>Tasker Repository - Registration</title>
 </head>
-<body id="defaultFont">
-
-<h1>Sign-up in Tasker Repository</h1>
+<body>
+<table style="font-family: 'Droid Sans Mono',monospace; font-size: smaller">
+    <tr>
+        <td><h2>Sign-up in Tasker Repository</h2></td>
+    </tr>
+</table>
 
 <form method="post" th:action="@{/signup}" id="registerForm">
-    <label for="username">username:</label>
-    <input type="text" name="username"/><br/>
 
-    <label for="email">e-mail:</label>
-    <input type="text" name="email"/><br/>
-
-    <label for="password">password:</label>
-    <input type="password" name="password"/><br/>
-
-    <label for="confirm">confirm password:</label>
-    <input type="password" name="confirm"/><br/>
-
-    <input type="hidden" name="timestamp">
-
-    <input type="submit" value="Sign-up"/>
+    <table style="
+            font-family: 'Droid Sans Mono',monospace;
+            font-size: smaller;
+            border-style: solid;
+            border-width: thin;
+            border-color: silver;
+    ">
+        <tr>
+            <td><label for="username">username:</label></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="username"/><br/></td>
+        </tr>
+        <tr>
+            <td><label for="email">e-mail:</label></td>
+        </tr>
+        <tr>
+            <td><input type="text" name="email"/><br/></td>
+        </tr>
+        <tr>
+            <td><label for="password">password:</label></td>
+        </tr>
+        <tr>
+            <td><input type="password" name="password"/><br/></td>
+        </tr>
+        <tr>
+            <td><label for="confirm">confirm password:</label></td>
+        </tr>
+        <tr>
+            <td><input type="password" name="confirm"/><br/></td>
+        </tr>
+        <tr>
+            <td th:align="left"><input type="submit" value="Sign-up"/></td>
+            <td><a th:href="@{/index}"><input type="button" th:value="Back"></a></td>
+        </tr>
+    </table>
 </form>
 
 </body>

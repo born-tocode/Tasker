@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tasker Repository - Login</title>
+</head>
+<body style="font-family: 'Droid Sans Mono',monospace;">
+<table style="font-size: smaller">
+    <tr>
+        <td><h2>Tasker Repository</h2></td>
+    </tr>
+    <tr>
+        <td>
+            <div th:if="${error}">
+                Logowanie nieudane. Sprawdź poprawność nazwy użytkownika i hasła.
+            </div>
+        </td>
+    </tr>
+</table>
+
+<form method="POST" th:action="@{/signin}" id="loginForm">
+    <table style="font-size: smaller;border-style: solid; border-width: thin; border-color: silver;">
+        <tr>
+            <td><label for="username">username:</label></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="username"/><br/></td>
+        </tr>
+        <tr>
+            <td><label for="password">password:</label></td>
+        </tr>
+        <tr>
+            <td><input type="password" name="password" id="password"/><br/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Sign-in" th:align="right"/></td>
+        </tr>
+        <tr>
+            <td>
+                <p>Jesteś nowy? Kliknij <a th:href="@{/signup}">tutaj</a>, aby się zarejestrować.</p>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<br/>
+<br/>
+<footer style="font-size: small;vertical-align: bottom">
+    &copy; 2020 by born to code
+</footer>
+</body>
+</html>
