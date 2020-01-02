@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Collection;
@@ -22,14 +24,15 @@ import java.util.Collection;
 @RequiredArgsConstructor
 public class User implements UserDetails {
 
-    private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Size(min = 3, message = "Minimum 3 characters")
     private final String username;
+    @Size(min = 6, message = "Minimum 6 characters")
     private final String password;
+    @Email(message = "Type correct e-mail")
     private final String email;
     private final Timestamp timestamp;
 
