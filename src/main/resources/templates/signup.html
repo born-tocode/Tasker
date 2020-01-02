@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Tasker Repository - Registration</title>
+</head>
+<body id="defaultFont">
+
+<h1>Sign-up in Tasker Repository</h1>
+
+<form method="post" th:action="@{/signup}" id="registerForm">
+    <label for="username">username:</label>
+    <input type="text" name="username"/><br/>
+
+    <label for="email">e-mail:</label>
+    <input type="text" name="email"/><br/>
+
+    <label for="password">password:</label>
+    <input type="password" name="password"/><br/>
+
+    <label for="confirm">confirm password:</label>
+    <input type="password" name="confirm"/><br/>
+
+    <input type="hidden" name="timestamp">
+
+    <input type="submit" value="Sign-up"/>
+</form>
+
+</body>
+</html>

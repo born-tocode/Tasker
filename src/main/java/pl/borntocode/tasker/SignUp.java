@@ -8,25 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.borntocode.tasker.data.UserRepository;
 
 @Controller
-@RequestMapping("/register")
-public class RegistrationController {
+@RequestMapping("/signup")
+public class SignUp {
 
     private UserRepository userRepo;
     private PasswordEncoder encoder;
 
-    public RegistrationController(UserRepository userRepo, PasswordEncoder encoder) {
+    public SignUp(UserRepository userRepo, PasswordEncoder encoder) {
         this.userRepo = userRepo;
         this.encoder = encoder;
     }
 
     @GetMapping
     public String registerForm() {
-        return "register";
+        return "signup";
     }
 
     @PostMapping
-    public String processRegistrationForm(RegistrationForm form) {
+    public String processRegistrationForm(SignUpForm form) {
         userRepo.save(form.toUser(encoder));
-        return "redirect:/login";
+        return "redirect:/signin";
     }
 }
