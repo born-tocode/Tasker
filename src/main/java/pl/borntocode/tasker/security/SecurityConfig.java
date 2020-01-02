@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    @Qualifier("userRepositoryUserDetailsService")
+    @Qualifier("userRepositoryDetailsService")
     @Autowired
     private UserDetailsService userDetailsService;
 
@@ -48,7 +48,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/alltasks", "/task/**")
                 .hasRole("USER")
-                .antMatchers("/", "/**").permitAll();
+                .antMatchers("/", "/**").permitAll()
+
+                .and()
+
+                .formLogin()
+                .loginPage("/signin");
     }
 
 }
