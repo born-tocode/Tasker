@@ -3,7 +3,6 @@ package pl.borntocode.tasker;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,8 +19,7 @@ import java.util.Collection;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class User implements UserDetails {
 
     @Id
@@ -34,7 +32,17 @@ public class User implements UserDetails {
     private final String password;
     @Email(message = "Type correct e-mail")
     private final String email;
-    private final Timestamp timestamp;
+    private final Timestamp registered;
+    private final Timestamp lastLogged;
+
+
+    public User(String username, String password, String email, Timestamp registered) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.registered = registered;
+        this.lastLogged = getLastLogged();
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
