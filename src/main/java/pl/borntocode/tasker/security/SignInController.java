@@ -2,9 +2,12 @@ package pl.borntocode.tasker.security;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.borntocode.tasker.data.UserRepository;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/signin")
@@ -19,7 +22,10 @@ public class SignInController {
     }
 
     @GetMapping
-    public String signInForm() {
+    public String signInForm(@Valid SignInForm form, Errors errors) {
+        if (errors.hasErrors()){
+            return "signin";
+        }
         return "signin";
     }
 
