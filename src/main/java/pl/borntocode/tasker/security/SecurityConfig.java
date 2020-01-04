@@ -49,10 +49,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/alltasks", "/task/**")
                 .hasRole("USER")
                 .antMatchers("/", "/**").permitAll()
+
                 .and()
                 .formLogin()
                 .loginPage("/signin")
-                .defaultSuccessUrl("/alltasks", true);
+                .defaultSuccessUrl("/alltasks", true)
+
+                .and()
+                .logout()
+                .logoutSuccessUrl("/");
     }
 
 }
