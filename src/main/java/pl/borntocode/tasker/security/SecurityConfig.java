@@ -52,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/signin")
-                .successForwardUrl("/alltasks");
+                .defaultSuccessUrl("/alltasks", true);
     }
 
 }
