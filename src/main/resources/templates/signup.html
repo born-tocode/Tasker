@@ -3,9 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tasker Repository - Registration</title>
+    <link rel="stylesheet" th:href="@{default.css}">
 </head>
-<body>
-<table style="font-family: 'Droid Sans Mono',monospace; font-size: smaller">
+<body id="defaultFont">
+<table>
     <tr>
         <td><h2>Sign-up in Tasker Repository</h2></td>
     </tr>
@@ -13,13 +14,7 @@
 
 <form method="post" th:action="@{/signup}" id="registerForm">
 
-    <table style="
-            font-family: 'Droid Sans Mono',monospace;
-            font-size: smaller;
-            border-style: solid;
-            border-width: thin;
-            border-color: silver;
-    ">
+    <table id="table">
         <tr>
             <td><label for="username">username:</label></td>
         </tr>
@@ -42,14 +37,18 @@
             <td><label for="confirm">confirm password:</label></td>
         </tr>
         <tr>
-            <td><input type="password" name="confirm"/><br/></td>
+            <td><input type="password" name="confirm"/><br/><br/></td>
         </tr>
         <tr>
             <td th:align="left"><input type="submit" value="Sign-up"/></td>
-            <td><a th:href="@{/index}"><input type="button" th:value="Back"></a></td>
+            <td><a th:href="@{/}"><input type="button" th:value="Back"></a></td>
         </tr>
     </table>
 </form>
-
+<br/>
+<br/>
+<footer id="footer">
+    &copy; 2020 by born to code
+</footer>
 </body>
 </html>

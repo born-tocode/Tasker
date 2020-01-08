@@ -3,9 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tasker Repository - Login</title>
+    <link rel="stylesheet" th:href="@{default.css}">
 </head>
-<body style="font-family: 'Droid Sans Mono',monospace;">
-<table style="font-size: smaller">
+<body id="defaultFont">
+<table>
     <tr>
         <td><h2>Tasker Repository</h2></td>
     </tr>
@@ -18,26 +19,29 @@
     </tr>
 </table>
 
-<form method="POST" th:action="@{/signin}" id="loginForm">
-    <table style="font-size: smaller;border-style: solid; border-width: thin; border-color: silver;">
+<form method="POST" th:action="@{/signin}" id="signinForm">
+    <table id="table">
         <tr>
             <td><label for="username">username:</label></td>
         </tr>
         <tr>
-            <td><input type="text" id="username"/><br/></td>
+            <td><input type="text" name="username" id="username"/><br/></td>
         </tr>
         <tr>
             <td><label for="password">password:</label></td>
         </tr>
         <tr>
-            <td><input type="password" name="password" id="password"/><br/></td>
+            <td><input type="password" name="password" id="password"/><br/><br/></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Sign-in" th:align="right"/></td>
+            <td><input type="submit" value="Sign-in" th:align="left"/></td>
+            <td><a th:href="@{/}"><input type="button" th:value="Back"></a></td>
         </tr>
+
         <tr>
             <td>
-                <p>Are you new? Click <a th:href="@{/signup}">here</a> to sign-up.</p>
+                <br/>
+                Are you new? Click <a th:href="@{/signup}">here</a> to sign-up.
             </td>
         </tr>
     </table>
@@ -45,7 +49,7 @@
 
 <br/>
 <br/>
-<footer style="font-size: small;vertical-align: bottom">
+<footer id="footer">
     &copy; 2020 by born to code
 </footer>
 </body>
