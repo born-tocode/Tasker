@@ -21,8 +21,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    @Qualifier("userRepositoryDetailsService")
     @Autowired
+    @Qualifier("userRepositoryDetailsService")
     private UserDetailsService userDetailsService;
 
     @Bean
@@ -33,10 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSource)
-                .usersByUsernameQuery(
-                        "select username, password, enabled from Users where username=?")
-                .authoritiesByUsernameQuery(
-                        "select username, authority from userAuthorities where username=?")
+                .withDefaultSchema()
                 .passwordEncoder(encoder());
 
         auth.userDetailsService(userDetailsService)
@@ -46,13 +43,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/alltasks", "/task/**")
+                //todo add @code "/tasks" to antMatchers
+                .antMatchers("/newtask", "/task/**")
                 .hasRole("USER")
-                .antMatchers("/", "/**").permitAll()
+                .antMatchers("/", "/**", "/tasks/**").permitAll()
 
                 .and()
                 .formLogin()
                 .loginPage("/signin")
+                .loginProcessingUrl("/signin")
                 .defaultSuccessUrl("/alltasks", true)
 
                 .and()
