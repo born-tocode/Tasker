@@ -3,15 +3,24 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tasker Repository</title>
+    <link rel="stylesheet" th:href="@{default.css}">
 </head>
-<body style="font-family: 'Droid Sans Mono',monospace; font-size: smaller">
+<body id="defaultFont">
 <table>
     <tr>
         <td><h2>Tasker Repository</h2></td>
     </tr>
     <tr>
+        <td style="font-size: smaller">...define your way to productivity</td>
+    </tr>
+</table>
+<br/>
+<br/>
+<table>
+    <tr>May you want:</tr>
+    <tr>
         <td>
-            <a   th:href="@{/signup}">Sign-up</a><br/>
+            <a th:href="@{/signup}">Sign-up</a><br/>
         </td>
     </tr>
     <tr>
@@ -25,7 +34,7 @@
 </table>
 <br/>
 <br/>
-<footer style="font-size: x-small;vertical-align: bottom">
+<footer id="footer">
     &copy; 2020 by born to code
 </footer>
 </body>
