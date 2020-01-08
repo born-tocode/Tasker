@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
+@Table(name = "Tasks")
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Task {
 
@@ -31,12 +32,12 @@ public class Task {
     @Pattern(regexp = "[\\d{8}]", message = "Must contain 8 digits in format YYYYMMDD")
     private Date dueDate;
 
-    private Timestamp timestamp;
+    private Timestamp addTime;
 
     public Task(String task, Date fromDate, Date dueDate) {
         this.task = task;
         this.fromDate = fromDate;
         this.dueDate = dueDate;
-        this.timestamp = getTimestamp();
+        this.addTime = getAddTime();
     }
 }
