@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Repository - Add new task</title>
+    <link rel="stylesheet" th:href="@{default.css}">
+</head>
+<body id="defaultFont">
+<table>
+    <tr>
+        <td><h2>Tasker Repository</h2></td>
+    </tr>
+</table>
+
+<form method="POST" th:action="@{/newtask}">
+    <table id="table">
+        <tr>
+            <td><label for="task">task:</label></td>
+        </tr>
+        <tr>
+            <td><input type="text" id="task"/><br/></td>
+        </tr>
+        <tr>
+            <td><label for="fromDate">from date:</label></td>
+        </tr>
+        <tr>
+            <td><input type="date" id="fromDate"/><br/></td>
+        </tr>
+        <tr>
+        <td><label for="dueDate">due date:</label></td>
+        </tr>
+        <tr>
+            <td><input type="date" id="dueDate"/><br/><br/></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
