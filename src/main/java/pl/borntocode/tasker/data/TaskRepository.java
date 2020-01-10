@@ -7,5 +7,5 @@ import pl.borntocode.tasker.Task;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    Task readByTaskContains(String string);
+    Task readTaskByTaskContaining(String string);
 }
