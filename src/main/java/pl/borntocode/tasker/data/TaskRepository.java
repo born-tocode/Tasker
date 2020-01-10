@@ -1,10 +1,10 @@
 package pl.borntocode.tasker.data;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import pl.borntocode.tasker.Task;
 
-@Repository
+@RepositoryRestResource
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
     Task readTaskByTaskContaining(String string);
