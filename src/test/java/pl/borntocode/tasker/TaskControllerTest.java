@@ -1,13 +1,12 @@
 package pl.borntocode.tasker;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import pl.borntocode.tasker.web.api.TaskController;
+import pl.borntocode.tasker.web.HomeController;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -15,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(TaskController.class)
+@WebMvcTest(HomeController.class)
 public class TaskControllerTest {
 
     @Autowired
@@ -27,13 +26,5 @@ public class TaskControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
                 .andExpect(content().string(containsString("Tasker Repository - index")));
-    }
-
-    @Disabled
-    void retrieveAllTasks() {
-    }
-
-    @Disabled
-    void getOneById() {
     }
 }
