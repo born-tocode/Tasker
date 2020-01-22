@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Tasker Repository</title>
+    <link rel="stylesheet" th:href="@{/static/default.css}">
 </head>
 <body>
+<div class="container">
+    <form id="form" method="post">
+        <h3>all tasks</h3>
 
-<br/>
+        <div th:each="${TasksRows}"></div>
+
+        <br/>
+        <a th:href="@{/tasks/newtask}">Add new task</a>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </form>
+    <form id="form" method="post" th:action="@{/logout}">
+        <fieldset>
+            <button type="submit">Logout</button>
+        </fieldset>
+        <fieldset>
+            <p class="copyright">&copy; 2020 by born to code</p>
+        </fieldset>
+    </form>
+</div>
+
+
 </body>
 </html>
