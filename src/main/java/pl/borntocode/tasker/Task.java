@@ -3,12 +3,12 @@ package pl.borntocode.tasker;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.borntocode.tasker.web.NewTaskForm;
 
 import javax.persistence.*;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
-import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -16,28 +16,33 @@ import java.sql.Timestamp;
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Task {
 
-    @ManyToOne
+    @OneToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_username", referencedColumnName = "username")
     private User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Size(min = 3, message = "Task must contain at least 3 characters")
-    private String task;
+    @Size(min = 3, max = 300, message = "Task must contain at least 3 and max 300 characters")
+    private final String task;
+    @NotNull
+    private final Date fromDate;
+    @NotNull
+    private final Date dueDate;
+    @NotNull
+    private final java.util.Date addTime;
 
-    @Pattern(regexp = "[\\d{8}]", message = "Must contain 8 digits in format YYYYMMDD")
-    private Date fromDate;
+    public Task(NewTaskForm taskForm) {
+        this.task = taskForm.getTask();
+        this.fromDate = taskForm.getFromDate();
+        this.dueDate = taskForm.getDueDate();
+        this.addTime = getTimestamp();
+        this.user = taskForm.getUser();
 
-    @Pattern(regexp = "[\\d{8}]", message = "Must contain 8 digits in format YYYYMMDD")
-    private Date dueDate;
+    }
 
-    private Timestamp addTime;
-
-    public Task(String task, Date fromDate, Date dueDate) {
-        this.task = task;
-        this.fromDate = fromDate;
-        this.dueDate = dueDate;
-        this.addTime = getAddTime();
+    public java.util.Date getTimestamp() {
+        return new java.util.Date();
     }
 }
