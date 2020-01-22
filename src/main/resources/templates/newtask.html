@@ -2,41 +2,40 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Task Repository - Add new task</title>
-    <link rel="stylesheet" th:href="@{default.css}">
+    <title>Tasker Repository - add new task</title>
+    <link rel="stylesheet" th:href="@{/static/default.css}">
 </head>
-<body id="defaultFont">
-<table>
-    <tr>
-        <td><h2>Tasker Repository</h2></td>
-    </tr>
-</table>
+<body>
+<div class="container">
+    <form id="form" th:action="@{/tasks/newtask}" method="post">
+        <h3>add new task</h3>
+        <br/>
+        <fieldset>
+            <label for="task">new task:</label>
+            <input id="task" name="task" placeholder="your task" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <label for="fromDate">from date:</label>
+            <input id="fromDate" name="fromDate" placeholder="from date:" type="date" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+            <label for="dueDate">due date:</label>
+            <input id="dueDate" name="dueDate" placeholder="due date:" type="date" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit" id="button" data-submit="...sending">Add new task</button>
+        </fieldset>
+        <fieldset>
+            <button name="reset" type="reset">Reset form</button>
+        </fieldset>
+        <fieldset>
+            <a th:href="@{/tasks/alltasks}">Back to all tasks</a>
+        </fieldset>
 
-<form method="POST" th:action="@{/newtask}">
-    <table id="table">
-        <tr>
-            <td><label for="task">task:</label></td>
-        </tr>
-        <tr>
-            <td><input type="text" id="task"/><br/></td>
-        </tr>
-        <tr>
-            <td><label for="fromDate">from date:</label></td>
-        </tr>
-        <tr>
-            <td><input type="date" id="fromDate"/><br/></td>
-        </tr>
-        <tr>
-        <td><label for="dueDate">due date:</label></td>
-        </tr>
-        <tr>
-            <td><input type="date" id="dueDate"/><br/><br/></td>
-        </tr>
-        <tr>
-            <td><input type="submit" value="Submit"></td>
-        </tr>
-    </table>
-</form>
+        <br/>
+        <br/>
+        <p class="copyright">&copy; 2020 by born to code</p>
+    </form>
+</div>
 </body>
 </html>
