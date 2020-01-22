@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,8 +12,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
-import org.springframework.session.security.web.authentication.SpringSessionRememberMeServices;
-import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -24,7 +21,7 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    private DataSource dataSource;
 
     @Autowired
     @Qualifier("userRepositoryDetailsService")
@@ -37,43 +34,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource);
+        auth
+                .jdbcAuthentication()
+                .dataSource(dataSource)
 
-        auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+                .and()
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(encoder());
     }
 
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/api")
-                .hasRole("USER")
+                .antMatchers("/api/**","/tasks/**").hasRole("USER")
                 .antMatchers("/", "/**").permitAll()
 
                 .and()
                 .formLogin()
                 .loginPage("/signin")
                 .loginProcessingUrl("/signin")
-                .defaultSuccessUrl("/api", true)
+                .defaultSuccessUrl("/tasks/alltasks", true)
+                .failureForwardUrl("/signin")
 
                 .and()
                 .logout()
                 .logoutSuccessUrl("/");
-
-        httpSecurity
-                .rememberMe()
-                .rememberMeServices(rememberMeServices());
-    }
-
-    @Bean
-    public PlatformTransactionManager transactionManager(DataSource dataSource) {
-        return new DataSourceTransactionManager(dataSource);
-    }
-
-    @Bean
-    public SpringSessionRememberMeServices rememberMeServices() {
-        SpringSessionRememberMeServices rememberMeServices =
-                new SpringSessionRememberMeServices();
-        rememberMeServices.setAlwaysRemember(true);
-        return rememberMeServices;
     }
 }
