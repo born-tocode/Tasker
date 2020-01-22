@@ -1,6 +1,6 @@
 package pl.borntocode.tasker.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -9,12 +9,11 @@ import pl.borntocode.tasker.User;
 import pl.borntocode.tasker.data.UserRepository;
 
 @Service
-public class UserRepositoryDetailsService implements UserDetailsService {
+public class UserRepositoryUserDetailsService implements UserDetailsService {
 
     private UserRepository userRepo;
 
-    @Autowired
-    public UserRepositoryDetailsService(UserRepository userRepo) {
+    public UserRepositoryUserDetailsService(UserRepository userRepo) {
         this.userRepo = userRepo;
     }
 
