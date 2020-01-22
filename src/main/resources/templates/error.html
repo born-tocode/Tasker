@@ -4,12 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Tasker Repository - Error</title>
+    <link rel="stylesheet" th:href="@{/static/default.css}">
 </head>
-<body>
+<body th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
 
-We have some problems..
-<br/><br/>
-No body is perfect...
+<div class="container">
+    <form id="form">
+
+        <h1 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|">404</h1>
+        <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
+
+        <fieldset>
+            <a href="/" th:href="@{/}">Back to Home Page</a>
+        </fieldset>
+
+    </form>
+</div>
 
 </body>
 </html>
