@@ -10,10 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Date;
 
 @Entity
 @Data
@@ -24,7 +23,6 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @Size(min = 3, message = "Minimum 3 characters")
     private final String username;
     @Size(min = 6, message = "Minimum 6 characters")
@@ -32,8 +30,7 @@ public class User implements UserDetails {
     @Email(message = "Type correct e-mail")
     private final String email;
     private final boolean enabled;
-    private final Timestamp registered;
-    private Timestamp lastLogged;
+    private final Date registered;
 
 
     public User(String username, String password, String email) {
@@ -42,11 +39,10 @@ public class User implements UserDetails {
         this.email = email;
         this.enabled = true;
         this.registered = getTimestamp();
-        this.lastLogged = getLastLogged();
     }
 
-    public Timestamp getTimestamp() {
-        return Timestamp.valueOf(LocalDateTime.now());
+    public Date getTimestamp() {
+        return new Date();
     }
 
     @Override
