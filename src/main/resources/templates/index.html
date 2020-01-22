@@ -3,39 +3,44 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Tasker Repository</title>
-    <link rel="stylesheet" th:href="@{default.css}">
+    <link rel="stylesheet" th:href="@{/static/default.css}">
 </head>
-<body id="defaultFont">
-<table>
-    <tr>
-        <td><h2>Tasker Repository</h2></td>
-    </tr>
-    <tr>
-        <td style="font-size: smaller">...define your way to productivity</td>
-    </tr>
-</table>
+<body>
+
+<div class="container">
+    <form id="form">
+        <h3>Tasker Repository</h3>
+        <h4>...define your way to productivity</h4>
+
+        <br/>
+
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+
+        <br/>
+        <br/>
+
+
+        <fieldset>
+            <a th:href="@{/signup}">
+                <button name="button" type="button">Sign-up</button>
+            </a>
+            <br/>
+        </fieldset>
+
+        <fieldset>
+            <a th:href="@{/signin}">
+                <button name="button" type="button">Sign-in</button>
+            </a>
+        </fieldset>
+        <br/>
+        <br/>
+        <p class="copyright">&copy; 2020 by born to code</p>
+    </form>
+</div>
 <br/>
 <br/>
-<table>
-    <tr>May you want:</tr>
-    <tr>
-        <td>
-            <a th:href="@{/signup}">Sign-up</a><br/>
-        </td>
-    </tr>
-    <tr>
-        <td>or..<br/></td>
-    </tr>
-    <tr>
-        <td>
-            <a th:href="@{/signin}">Sign-in</a><br/>
-        </td>
-    </tr>
-</table>
-<br/>
-<br/>
-<footer id="footer">
-    &copy; 2020 by born to code
-</footer>
+
 </body>
 </html>
