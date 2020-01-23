@@ -13,8 +13,12 @@ import pl.borntocode.tasker.data.TaskRepository;
 @RequestMapping("/tasks")
 public class AllTasksController {
 
+    private TaskRepository taskRepository;
+
     @Autowired
-    TaskRepository taskRepository;
+    public AllTasksController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     @GetMapping("/alltasks")
     public String getAllTasks(Model model, @AuthenticationPrincipal User user) {

@@ -1,6 +1,7 @@
 package pl.borntocode.tasker.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,7 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
 
     @Autowired
-    public SecurityConfig(DataSource dataSource, UserDetailsService userDetailsService) {
+    public SecurityConfig(@Qualifier("dataSource") DataSource dataSource,
+            @Qualifier("userRepositoryUserDetailsService")UserDetailsService userDetailsService) {
         this.dataSource = dataSource;
         this.userDetailsService = userDetailsService;
     }
@@ -47,7 +49,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/api/**","/tasks/**").hasRole("USER")
+                .antMatchers("/api/**","/tasks/**")
+                .fullyAuthenticated()
                 .antMatchers("/", "/**").permitAll()
 
                 .and()
