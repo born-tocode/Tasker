@@ -12,7 +12,7 @@
     <form id="form">
 
         <h1 th:text="|${httpStatus} - ${httpStatus.reasonPhrase}|">404</h1>
-        <p th:utext="${errorMessage}">Error java.lang.NullPointerException</p>
+        <p th:utext="${ErrorMessage}">Error java.lang.NullPointerException</p>
 
         <fieldset>
             <a href="/" th:href="@{/}">Back to Home Page</a>

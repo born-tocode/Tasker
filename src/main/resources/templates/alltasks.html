@@ -11,7 +11,7 @@
     <form id="form" method="post">
         <h3>all tasks</h3>
 
-        <div th:each="${TasksRows}"></div>
+<!--        <div th:each="${TasksRows.iterator().next()}"></div>-->
 
         <br/>
         <a th:href="@{/tasks/newtask}">Add new task</a>
