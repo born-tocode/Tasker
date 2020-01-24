@@ -23,6 +23,6 @@ public class IndexPageTest {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("index"))
-                .andExpect(content().string(containsString("Tasker Repository - index")));
+                .andExpect(content().string(containsString("Tasker Repository")));
     }
 }

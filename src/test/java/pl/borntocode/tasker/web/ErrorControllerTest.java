@@ -19,6 +19,6 @@ class ErrorControllerTest {
     @Test
     void errorPage() throws Exception {
         mockMvc.perform(get("/error"))
-                .andExpect(status().is4xxClientError());
+                .andExpect(status().isOk());
     }
 }
