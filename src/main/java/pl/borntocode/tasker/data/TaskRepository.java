@@ -1,12 +1,16 @@
 package pl.borntocode.tasker.data;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import pl.borntocode.tasker.Task;
 
+import java.util.List;
+
 @RepositoryRestResource
-public interface TaskRepository extends JpaRepository<Task, Long> {
+public interface TaskRepository extends CrudRepository<Task, Long> {
 
-    Iterable<Task> readTaskOrderByUserUsername(String user);
-
+    @Query(value = "select * from Tasks where USER_USERNAME =? limit 100", nativeQuery = true)
+    List<Task> getByUserUsername(@Param("user") String user);
 }
