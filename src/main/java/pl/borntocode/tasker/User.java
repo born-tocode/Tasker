@@ -3,6 +3,7 @@ package pl.borntocode.tasker;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,19 +31,15 @@ public class User implements UserDetails {
     @Email(message = "Type correct e-mail")
     private final String email;
     private final boolean enabled;
-    private final Date registered;
+    @CreationTimestamp
+    private Date registered;
 
 
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.enabled = true;
-        this.registered = getTimestamp();
-    }
-
-    public Date getTimestamp() {
-        return new Date();
+        this.enabled = isEnabled();
     }
 
     @Override
