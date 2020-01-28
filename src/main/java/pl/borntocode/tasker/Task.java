@@ -3,6 +3,7 @@ package pl.borntocode.tasker;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import pl.borntocode.tasker.web.NewTaskForm;
 
 import javax.persistence.*;
@@ -16,9 +17,9 @@ import java.sql.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE, force = true)
 public class Task {
 
-    @OneToOne(targetEntity = User.class)
-    @JoinColumn(name = "user_username", referencedColumnName = "username")
-    private User user;
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "USER_USERNAME", referencedColumnName = "USERNAME")
+    private final User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,19 +31,13 @@ public class Task {
     private final Date fromDate;
     @NotNull
     private final Date dueDate;
-    @NotNull
-    private final java.util.Date addTime;
+    @CreationTimestamp
+    private java.util.Date createTime;
 
     public Task(NewTaskForm taskForm) {
         this.task = taskForm.getTask();
         this.fromDate = taskForm.getFromDate();
         this.dueDate = taskForm.getDueDate();
-        this.addTime = getTimestamp();
         this.user = taskForm.getUser();
-
-    }
-
-    public java.util.Date getTimestamp() {
-        return new java.util.Date();
     }
 }
