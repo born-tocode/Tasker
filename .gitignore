@@ -1,4 +1,3 @@
-HELP.md
 .gradle
 build/
 /examples/
@@ -7,8 +6,7 @@ build/
 !**/src/test/**
 
 ### RESOURCES ###
-src/main/resources/*.trace.db
-src/main/resources/*.lock.db
+src/main/resources/*.db
 
 ### STS ###
 .apt_generated
