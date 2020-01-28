@@ -11,21 +11,21 @@ import pl.borntocode.tasker.data.TaskRepository;
 
 @Controller
 @RequestMapping("/tasks")
-public class AllTasksController {
+public class UserTasksController {
 
     private TaskRepository taskRepository;
 
     @Autowired
-    public AllTasksController(TaskRepository taskRepository) {
+    public UserTasksController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
 
     @GetMapping("/alltasks")
     public String getAllTasks(Model model, @AuthenticationPrincipal User user) {
 
-        var result = taskRepository.readTaskOrderByUserUsername(user.getUsername());
-
-        model.addAttribute("TasksRows", result).asMap();
+        model
+                .addAttribute("TasksRows", taskRepository
+                .getByUserUsername(user.getUsername()));
 
         return "alltasks";
     }
