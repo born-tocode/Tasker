@@ -20,8 +20,23 @@ body {
     background: rgb(255, 255, 255);
 }
 
-.container {
+tr, td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.containerAuthorization {
     max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.containerUser {
+    max-width: 900px;
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -44,6 +59,33 @@ body {
     margin: 150px 0;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
+#taskForm {
+    background: #a4b3bf;
+    padding: 25px;
+    margin: 150px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#headerRow{
+    text-align: center;
+    font-weight: bold;
+}
+
+#tasksTable {
+    font-family: "JetBrains Mono Medium", monospace;
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 30px;
+    color: #1c1c1c;
+    border-collapse: collapse;
+/*border-style: solid;*/
+/*table-layout: fixed;*/
+/*border-width: 1px;*/
+/*border-radius: 3px;*/
+/*table-border-color-dark: dimgrey;*/
+}
+
 
 #form h3 {
     display: block;

@@ -7,11 +7,32 @@
     <link rel="stylesheet" th:href="@{/static/default.css}">
 </head>
 <body>
-<div class="container">
-    <form id="form" method="post">
+<div class="containerUser">
+    <form id="taskForm" th:action="@{/tasks/alltasks}" th:object="${Tasks}" method="post">
         <h3>all tasks</h3>
 
-<!--        <div th:each="${TasksRows.iterator().next()}"></div>-->
+        <table id="tasksTable">
+            <tr id="headerRow">
+                <td>idx:</td>
+                <td>task:</td>
+                <td>from date:</td>
+                <td>due date:</td>
+                <td>create time:</td>
+                <td>options:</td>
+            </tr>
+            <tr th:each="task, taskStat : ${Tasks}">
+                <td th:text="${taskStat.count}">1</td>
+                <td th:text="${task.getTask()}">user's task</td>
+                <td th:text="${task.getFromDate()}">2020-01-01</td>
+                <td th:text="${task.getDueDate()}">2020-01-02</td>
+                <td th:text="${task.getCreateTime()}">timestamp</td>
+                <td>
+                    <fieldset><a th:href="@{'/tasks/alltasks/edit/' + ${task.getId()}}">edit</a> </fieldset>
+                    <fieldset><a th:href="@{'/tasks/alltasks/delete/' + ${task.getId()}}">delete</a></fieldset>
+                </td>
+
+            </tr>
+        </table>
 
         <br/>
         <a th:href="@{/tasks/newtask}">Add new task</a>

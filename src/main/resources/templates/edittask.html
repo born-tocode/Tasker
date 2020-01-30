@@ -7,11 +7,11 @@
 </head>
 <body>
 <div class="containerAuthorization">
-    <form id="form" th:action="@{/tasks/newtask}" method="post">
-        <h3>add new task</h3>
+    <form id="form" th:action="@{'/tasks/alltasks/edit/' + ${task}" method="post">
+        <h3>edit task</h3>
         <br/>
         <fieldset>
-            <label for="task">new task:</label>
+            <label for="task">task:</label>
             <input id="task" name="task" placeholder="your task" type="text" tabindex="1" required autofocus>
         </fieldset>
         <fieldset>
@@ -23,7 +23,7 @@
             <input id="dueDate" name="dueDate" placeholder="due date:" type="date" tabindex="3" required>
         </fieldset>
         <fieldset>
-            <button name="submit" type="submit" id="button" data-submit="...sending">Add new task</button>
+            <button name="submit" type="submit" id="button" data-submit="...sending">Edit task</button>
         </fieldset>
         <fieldset>
             <button name="reset" type="reset">Reset form</button>
