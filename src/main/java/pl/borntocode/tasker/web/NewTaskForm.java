@@ -11,6 +11,7 @@ import java.sql.Date;
 public class NewTaskForm {
 
     private String task;
+    private String priority;
     private Date fromDate;
     private Date dueDate;
     private User user;
