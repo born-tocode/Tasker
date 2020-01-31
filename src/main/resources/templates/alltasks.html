@@ -11,35 +11,39 @@
     <form id="taskForm" th:action="@{/tasks/alltasks}" th:object="${Tasks}" method="post">
         <h3>all tasks</h3>
 
-        <table id="tasksTable">
-            <tr id="headerRow">
-                <td>idx:</td>
-                <td>task:</td>
-                <td>from date:</td>
-                <td>due date:</td>
-                <td>create time:</td>
-                <td>options:</td>
+        <table class="tasksTable">
+            <thead>
+            <tr>
+                <th>idx:</th>
+                <th>task:</th>
+                <th>priority</th>
+                <th>from date:</th>
+                <th>due date:</th>
+                <th>create time:</th>
+                <th>options:</th>
             </tr>
+            </thead>
+            <tbody>
             <tr th:each="task, taskStat : ${Tasks}">
                 <td th:text="${taskStat.count}">1</td>
                 <td th:text="${task.getTask()}">user's task</td>
+                <td th:text="${task.getPriority()}">priority</td>
                 <td th:text="${task.getFromDate()}">2020-01-01</td>
                 <td th:text="${task.getDueDate()}">2020-01-02</td>
                 <td th:text="${task.getCreateTime()}">timestamp</td>
                 <td>
-                    <fieldset><a th:href="@{'/tasks/alltasks/edit/' + ${task.getId()}}">edit</a> </fieldset>
-                    <fieldset><a th:href="@{'/tasks/alltasks/delete/' + ${task.getId()}}">delete</a></fieldset>
+                    <a th:href="@{'/tasks/alltasks/edit/' + ${task.getId()}}">edit</a>
+                    <a th:href="@{'/tasks/alltasks/delete/' + ${task.getId()}}">delete</a>
                 </td>
-
             </tr>
+            </tbody>
         </table>
 
         <br/>
         <a th:href="@{/tasks/newtask}">Add new task</a>
         <br/>
         <br/>
-        <br/>
-        <br/>
+
     </form>
     <form id="form" method="post" th:action="@{/logout}">
         <fieldset>
