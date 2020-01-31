@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.borntocode.tasker.User;
 import pl.borntocode.tasker.data.TaskRepository;
 
@@ -28,5 +27,17 @@ public class UserTasksController {
                 .getByUserUsername(user.getUsername()));
 
         return "alltasks";
+    }
+
+    @GetMapping("/alltasks/edit/{id}")
+    public String editTask(@PathVariable(name = "id") Long idr
+                          ) {
+        return "edittask";
+    }
+
+    @GetMapping("/alltasks/delete/{id}")
+    public String deleteTask(@PathVariable(name = "id") Long id) {
+        taskRepository.deleteById(id);
+        return "redirect:/tasks/alltasks";
     }
 }
