@@ -45,6 +45,7 @@ create table if not exists tasks
 (
     id       integer      not null unique,
     task     varchar(300) not null,
+    priority varchar(1)   not null,
     fromDate date         not null,
     dueDate  date         not null,
     addTime  timestamp    not null
