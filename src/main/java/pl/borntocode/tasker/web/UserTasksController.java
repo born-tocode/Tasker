@@ -30,8 +30,7 @@ public class UserTasksController {
     }
 
     @GetMapping("/alltasks/edit/{id}")
-    public String editTask(@PathVariable(name = "id") Long idr
-                          ) {
+    public String editTask(@PathVariable(name = "id") Long id) {
         return "edittask";
     }
 
