@@ -13,7 +13,6 @@
 
 body {
     font-family: "JetBrains Mono ExtraBold", monospace;
-    /*font-weight: 100;*/
     font-size: 12px;
     line-height: 30px;
     color: #1c1c1c;
@@ -21,39 +20,33 @@ body {
 }
 
 table.tasksTable {
-    /*border: 1px solid #1C6EA4;*/
-    background-color: #b8b8b8;
+    font-family: "JetBrains Mono", monospace;
+    background-color: #3A3A3A;
     width: 100%;
-    text-align: left;
+    text-align: center;
     border-collapse: collapse;
 }
 
 table.tasksTable td, table.tasksTable th {
-    border: 1px solid #AAAAAA;
+    border: 1px solid #737373;
     padding: 3px 2px;
+    color: #e0e0e0;
 }
 
-table.tasksTable tbody td {
-    font-family: "JetBrains Mono Medium", monospace;
+table.tasksTable tbody td a {
+    font-family: "JetBrains Mono", monospace;
     font-size: 12px;
-}
-
-table.tasksTable tr:nth-child(even) {
-    background: #929292;
+    color: #e0e0e0;
 }
 
 table.tasksTable thead {
-    background: #858585;
+    background: #292929;
 }
 
 table.tasksTable thead th {
-    font-family: "JetBrains Mono Medium", monospace;
+    font-family: "Source Code Pro Light", monospace;
     font-size: 12px;
-    color: #FFFFFF;
-}
-
-table.tasksTable thead th:first-child {
-    border-left: none;
+    color: #e0e0e0;
 }
 
 .containerAuthorization {
@@ -94,26 +87,6 @@ table.tasksTable thead th:first-child {
     margin: 150px 0;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
-#headerRow{
-    text-align: center;
-    font-weight: bold;
-}
-
-#tasksTable {
-    font-family: "JetBrains Mono Medium", monospace;
-    font-weight: 100;
-    font-size: 12px;
-    line-height: 30px;
-    color: #1c1c1c;
-    border-collapse: collapse;
-/*border-style: solid;*/
-/*table-layout: fixed;*/
-/*border-width: 1px;*/
-/*border-radius: 3px;*/
-/*table-border-color-dark: dimgrey;*/
-}
-
 
 #form h3 {
     display: block;
