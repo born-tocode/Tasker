@@ -8,9 +8,9 @@
 </head>
 <body>
 <div class="containerUser">
-    <form id="taskForm" th:action="@{/tasks/alltasks}" th:object="${Tasks}" method="post">
-        <h3>all tasks</h3>
-
+    <form id="taskForm" th:action="@{/tasks/alltasks}" th:object="${UserTasks}" method="post">
+        <h2>all tasks <i th:text="${'@' + Username}">username</i></h2>
+        <br/>
         <table class="tasksTable">
             <thead>
             <tr>
@@ -24,7 +24,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="task, taskStat : ${Tasks}">
+            <tr th:each="task, taskStat : ${UserTasks}">
                 <td th:text="${taskStat.count}">1</td>
                 <td th:text="${task.getTask()}">user's task</td>
                 <td th:text="${task.getPriority()}">priority</td>
