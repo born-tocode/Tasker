@@ -27,6 +27,7 @@ public class Task {
 
     @Size(min = 3, max = 300, message = "Task must contain at least 3 and max 300 characters")
     private final String task;
+    private final String priority;
     @NotNull
     private final Date fromDate;
     @NotNull
@@ -39,5 +40,6 @@ public class Task {
         this.fromDate = taskForm.getFromDate();
         this.dueDate = taskForm.getDueDate();
         this.user = taskForm.getUser();
+        this.priority = taskForm.getPriority();
     }
 }
