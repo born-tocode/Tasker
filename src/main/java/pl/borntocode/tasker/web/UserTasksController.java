@@ -23,19 +23,26 @@ public class UserTasksController {
     public String getAllTasks(Model model, @AuthenticationPrincipal User user) {
 
         model
-                .addAttribute("TasksRows", taskRepository
-                .getByUserUsername(user.getUsername()));
+                .addAttribute("UserTasks", taskRepository
+                .getByUserUsername(user.getUsername()))
+                .addAttribute("Username", user.getUsername());
 
         return "alltasks";
     }
 
     @GetMapping("/alltasks/edit/{id}")
-    public String editTask(@PathVariable(name = "id") Long id) {
+    public String editTask(@PathVariable @SessionAttribute Long id, Model model) {
         return "edittask";
     }
 
+    @PostMapping("/alltasks/edit/{id}")
+    public String saveTask(@PathVariable @SessionAttribute Long id) {
+        taskRepository.findById(id);
+        return "redirect:/tasks/alltasks";
+    }
+
     @GetMapping("/alltasks/delete/{id}")
-    public String deleteTask(@PathVariable(name = "id") Long id) {
+    public String deleteTask(@PathVariable Long id) {
         taskRepository.deleteById(id);
         return "redirect:/tasks/alltasks";
     }
