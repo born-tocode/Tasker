@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="containerAuthorization">
-    <form id="form" th:action="@{'/tasks/alltasks/edit/' + ${task}" method="post">
+    <form id="form" th:action="@{/tasks/alltasks/edit/}" method="post">
         <h3>edit task</h3>
         <br/>
         <fieldset>
@@ -15,15 +15,21 @@
             <input id="task" name="task" placeholder="your task" type="text" tabindex="1" required autofocus>
         </fieldset>
         <fieldset>
+            <label>priority:</label>
+            <label><input id="priorityH" name="priority" type="radio" value="H" tabindex="2">High</label>
+            <label><input id="priorityM" name="priority" type="radio" value="M" tabindex="3">Medium</label>
+            <label><input id="priorityL" name="priority" type="radio" value="L" tabindex="4">Low</label>
+        </fieldset>
+        <fieldset>
             <label for="fromDate">from date:</label>
-            <input id="fromDate" name="fromDate" placeholder="from date:" type="date" tabindex="2" required>
+            <input id="fromDate" name="fromDate" placeholder="from date:" type="date" tabindex="5" required>
         </fieldset>
         <fieldset>
             <label for="dueDate">due date:</label>
-            <input id="dueDate" name="dueDate" placeholder="due date:" type="date" tabindex="3" required>
+            <input id="dueDate" name="dueDate" placeholder="due date:" type="date" tabindex="6" required>
         </fieldset>
         <fieldset>
-            <button name="submit" type="submit" id="button" data-submit="...sending">Edit task</button>
+            <button name="submit" type="submit" id="button" data-submit="...sending">Submit</button>
         </fieldset>
         <fieldset>
             <button name="reset" type="reset">Reset form</button>
