@@ -8,7 +8,7 @@ import java.sql.Date;
 
 @Data
 @RequiredArgsConstructor
-public class NewTaskForm {
+public class TaskForm {
 
     private String task;
     private String priority;
