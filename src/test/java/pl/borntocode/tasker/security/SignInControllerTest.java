@@ -36,6 +36,7 @@ class SignInControllerTest {
         mockMvc.perform(get("/signin")
                        .with(testUser()));
         mockMvc.perform((get("/tasks/alltasks")))
+                .andExpect(result -> result.getResponse().setForwardedUrl("/tasks/alltasks"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrlPattern("**/signin"))
                 .andExpect(view().name("alltasks"));

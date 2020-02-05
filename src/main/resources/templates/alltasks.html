@@ -30,7 +30,7 @@
                 <td th:text="${task.getPriority()}">priority</td>
                 <td th:text="${task.getFromDate()}">2020-01-01</td>
                 <td th:text="${task.getDueDate()}">2020-01-02</td>
-                <td th:text="${task.getCreateTime()}">timestamp</td>
+                <td th:text="${task.getAddTime()}">timestamp</td>
                 <td>
                     <a th:href="@{'/tasks/alltasks/edit/' + ${task.getId()}}">edit</a>
                     <a th:href="@{'/tasks/alltasks/delete/' + ${task.getId()}}">delete</a>

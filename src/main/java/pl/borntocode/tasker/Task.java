@@ -4,12 +4,12 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import pl.borntocode.tasker.web.NewTaskForm;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 @Data
 @Entity
@@ -33,13 +33,13 @@ public class Task {
     @NotNull
     private final Date dueDate;
     @CreationTimestamp
-    private java.util.Date createTime;
+    private Timestamp addTime;
 
-    public Task(NewTaskForm taskForm) {
-        this.task = taskForm.getTask();
-        this.fromDate = taskForm.getFromDate();
-        this.dueDate = taskForm.getDueDate();
-        this.user = taskForm.getUser();
-        this.priority = taskForm.getPriority();
+    public Task(String task, String priority, Date fromDate, Date dueDate, User user) {
+        this.task = task;
+        this.priority = priority;
+        this.fromDate = fromDate;
+        this.dueDate = dueDate;
+        this.user = user;
     }
 }

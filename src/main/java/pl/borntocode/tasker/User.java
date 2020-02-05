@@ -25,7 +25,7 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Size(min = 3, message = "Minimum 3 characters")
-    private final String username;
+    private String username;
     @Size(min = 6, message = "Minimum 6 characters")
     private final String password;
     @Email(message = "Type correct e-mail")

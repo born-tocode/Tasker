@@ -27,7 +27,7 @@ public class SignInController {
     }
 
     @PostMapping
-    public String processLoginForm(SignInForm form, Errors errors) {
+    public String processLoginForm(Errors errors) {
         if (errors.hasErrors()){
             return "signin";
         }

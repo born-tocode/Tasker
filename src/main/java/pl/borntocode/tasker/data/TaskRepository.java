@@ -10,6 +10,6 @@ import pl.borntocode.tasker.Task;
 public interface TaskRepository extends CrudRepository<Task, Long> {
 
     @Query("FROM Task T WHERE T.user.username=?1")
-    Iterable<Task> getByUserUsername(@Param("user") String user);
+    Iterable<Task> getTasksByUserUsername(@Param("user") String user);
 
 }
