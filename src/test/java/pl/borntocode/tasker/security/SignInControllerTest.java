@@ -30,25 +30,4 @@ class SignInControllerTest {
                 .andExpect(view().name("signin"))
                 .andExpect(content().string(containsString("Tasker Repository")));
     }
-
-    @Test
-    void logInAsUser() throws Exception {
-        mockMvc.perform(get("/signin")
-                       .with(testUser()));
-        mockMvc.perform((get("/tasks/alltasks")))
-                .andExpect(result -> result.getResponse().setForwardedUrl("/tasks/alltasks"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrlPattern("**/signin"))
-                .andExpect(view().name("alltasks"));
-    }
-
-    @Test
-    void logoutUser() throws Exception {
-        mockMvc.perform(get("/signin").with(testUser()))
-                .andExpect(redirectedUrl("/tasks/alltasks"));
-        mockMvc.perform(get("/logout").with(testUser()))
-                .andExpect(status().isOk())
-                .andExpect(redirectedUrl("/index"));
-    }
-
 }
