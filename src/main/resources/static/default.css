@@ -16,6 +16,22 @@ body {
     background: rgba(22, 51, 83, 0.53);
 }
 
+a:link {
+    color: #171717;
+}
+
+a:visited {
+    color: #171717;
+}
+
+a:hover {
+    color: #171717;
+}
+
+a:active {
+    color: #171717;
+}
+
 table.tasksTable {
     font-family: "JetBrains Mono", monospace;
     background-color: #3A3A3A;
