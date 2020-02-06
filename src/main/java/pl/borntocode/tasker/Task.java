@@ -4,9 +4,9 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -28,9 +28,9 @@ public class Task {
     @Size(min = 3, max = 300, message = "Task must contain at least 3 and max 300 characters")
     private final String task;
     private final String priority;
-    @NotNull
+    @DateTimeFormat
     private final Date fromDate;
-    @NotNull
+    @DateTimeFormat
     private final Date dueDate;
     @CreationTimestamp
     private Timestamp addTime;
