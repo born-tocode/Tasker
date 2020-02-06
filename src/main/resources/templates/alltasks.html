@@ -13,12 +13,11 @@
         <br/>
         <table class="tasksTable">
             <thead>
-            <tr>
-                <th>idx</th>
+            <tr>                <th>idx</th>
                 <th>task</th>
                 <th>priority</th>
                 <th>from date</th>
-                <th>due date</th>
+                <th>&#9650; due date &#9660;</th>
                 <th>create time</th>
                 <th>options</th>
             </tr>
@@ -40,7 +39,9 @@
         </table>
 
         <br/>
+        <fieldset th:align="right">
         <a th:href="@{/tasks/newtask}">Add new task</a>
+        </fieldset>
         <br/>
         <br/>
 
