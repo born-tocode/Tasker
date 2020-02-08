@@ -13,12 +13,29 @@
         <br/>
         <table class="tasksTable">
             <thead>
-            <tr>                <th>idx</th>
+            <tr>
+                <th>idx</th>
                 <th>task</th>
-                <th>priority</th>
-                <th>from date</th>
-                <th>&#9650; due date &#9660;</th>
-                <th>create time</th>
+                <th>
+                    <a th:href="@{/tasks/alltasks/sort/bypriorityasc}">&#9650;</a>
+                    priority
+                    <a th:href="@{/tasks/alltasks/sort/byprioritydesc}">&#9660;</a>
+                </th>
+                <th>
+                    <a th:href="@{/tasks/alltasks/sort/byfromdateasc}">&#9650;</a>
+                    from date
+                    <a th:href="@{/tasks/alltasks/sort/byfromdatedesc}">&#9660;</a>
+                </th>
+                <th>
+                    <a th:href="@{/tasks/alltasks/sort/byduedateasc}">&#9650;</a>
+                    due date
+                    <a th:href="@{/tasks/alltasks/sort/byduedatedesc}">&#9660;</a>
+                </th>
+                <th>9
+                    <a th:href="@{/tasks/alltasks/sort/byaddtimeasc}">&#9650;</a>
+                    create time
+                    <a th:href="@{/tasks/alltasks/sort/byaddtimedesc}">&#9660;</a>
+                </th>
                 <th>options</th>
             </tr>
             </thead>
@@ -40,7 +57,7 @@
 
         <br/>
         <fieldset th:align="right">
-        <a th:href="@{/tasks/newtask}">Add new task</a>
+            <a th:href="@{/tasks/newtask}">Add new task</a>
         </fieldset>
         <br/>
         <br/>
@@ -55,7 +72,5 @@
         </fieldset>
     </form>
 </div>
-
-
 </body>
 </html>
