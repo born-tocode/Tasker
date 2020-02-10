@@ -70,7 +70,7 @@ table.tasksTable thead th a {
 }
 
 .containerUser {
-    max-width: 800px;
+    max-width: 850px;
     width: 100%;
     margin: 0 auto;
     position: relative;
@@ -113,6 +113,10 @@ table.tasksTable thead th a {
     display: block;
     font-size: 13px;
     font-weight: 400;
+}
+
+.editedTask {
+    color: #595959;
 }
 
 fieldset {

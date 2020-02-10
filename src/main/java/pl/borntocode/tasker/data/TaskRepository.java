@@ -1,9 +1,11 @@
 package pl.borntocode.tasker.data;
 
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.transaction.annotation.Transactional;
 import pl.borntocode.tasker.Task;
 
 import java.sql.Date;
@@ -27,8 +29,10 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
             "T.priority='H' then 3 else 4 end desc")
     Iterable<Task> getTasksByUserUsernameOrderByPriorityDesc(@Param("user") String user);
 
-    @Query("update Task T set T.task= :task, T.priority= :priority,T.fromDate= :fromDate,T.dueDate= :dueDate where T.id= :id")
-    void getTaskByIdAndUpdate(@Param("id") Long id, @Param("task") String task, @Param("priority") String priority,
-                                @Param("fromDate")Date fromDate, @Param("dueDate") Date dueDate);
+    @Modifying
+    @Transactional
+    @Query("update Task T set T.task= :task, T.priority= :priority, T.fromDate= :fromDate, T.dueDate= :dueDate where T.id= :id")
+    void getTaskByIdAndUpdate(@Param("task") String task, @Param("priority") String priority, @Param("fromDate")Date fromDate,
+            @Param("dueDate") Date dueDate, @Param("id") Long id);
 
 }

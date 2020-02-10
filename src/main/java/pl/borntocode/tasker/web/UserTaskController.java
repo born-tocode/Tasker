@@ -1,7 +1,6 @@
 package pl.borntocode.tasker.web;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.borntocode.tasker.User;
 import pl.borntocode.tasker.data.TaskRepository;
 
+import javax.validation.Valid;
+
 @Slf4j
 @Controller
 @RequestMapping("/tasks")
@@ -17,7 +18,6 @@ public class UserTaskController {
 
     private TaskRepository taskRepository;
 
-    @Autowired
     public UserTaskController(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
@@ -48,6 +48,27 @@ public class UserTaskController {
         taskRepository.save(taskForm.toTask(user));
         log.info("saved E Task to Repo");
 
+        return "redirect:/tasks/alltasks";
+    }
+
+    @GetMapping("/edit/{id}")
+    public ModelAndView displayTaskForm(@PathVariable Long id, ModelAndView modelAndView) {
+        var task = taskRepository.findById(id).get();
+
+        modelAndView.addObject("Id", id)
+                    .addObject("Task", task)
+                    .setViewName("edittask");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/edit")
+    public String updateTask(@Valid TaskForm taskForm, Errors errors) {
+        if (errors.hasErrors()) {
+            log.error(errors.toString());
+        }
+        taskRepository.getTaskByIdAndUpdate(taskForm.getTask(),taskForm.getPriority(),taskForm.getFromDate(),taskForm.getDueDate(),
+                                             taskForm.getId());
         return "redirect:/tasks/alltasks";
     }
 

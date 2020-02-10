@@ -48,7 +48,7 @@
                 <td th:text="${task.getDueDate()}">2020-01-02</td>
                 <td th:text="${task.getAddTime()}">timestamp</td>
                 <td>
-                    <a th:href="@{'/tasks/alltasks/edit/' + ${task.getId()}}">edit</a>
+                    <a th:href="@{'/tasks/edit/' + ${task.getId()}}">edit</a>
                     <a th:href="@{'/tasks/alltasks/delete/' + ${task.getId()}}">delete</a>
                 </td>
             </tr>
@@ -59,8 +59,6 @@
         <fieldset th:align="right">
             <a th:href="@{/tasks/newtask}">Add new task</a>
         </fieldset>
-        <br/>
-        <br/>
 
     </form>
     <form id="form" method="post" th:action="@{/logout}">

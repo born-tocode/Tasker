@@ -7,28 +7,29 @@
 </head>
 <body>
 <div class="containerAuthorization">
-    <form id="form" th:action="@{/tasks/alltasks/edit/}" method="post">
+    <form id="form" th:action="@{/tasks/edit}" method="post">
         <h3>edit task</h3>
         <br/>
         <fieldset>
             <label for="task">task:</label>
-            <input id="task" name="task" placeholder="your task" type="text" tabindex="1" required autofocus>
+            <input id="task" name="task" th:placeholder="${Task.getTask()}" type="text" tabindex="1" autofocus>
         </fieldset>
         <fieldset>
-            <label>priority:</label>
+            <label>priority: (<i class="editedTask" th:text="${Task.getPriority()}"></i>)</label></br>
             <label><input id="priorityH" name="priority" type="radio" value="H" tabindex="2">High</label>
             <label><input id="priorityM" name="priority" type="radio" value="M" tabindex="3">Medium</label>
             <label><input id="priorityL" name="priority" type="radio" value="L" tabindex="4">Low</label>
         </fieldset>
         <fieldset>
-            <label for="fromDate">from date:</label>
-            <input id="fromDate" name="fromDate" placeholder="from date:" type="date" tabindex="5" required>
+            <label for="fromDate">from date: (<i class="editedTask" th:text="${Task.getFromDate()}"></i>)</label>
+            <input id="fromDate" name="fromDate" type="date" tabindex="5">
         </fieldset>
         <fieldset>
-            <label for="dueDate">due date:</label>
-            <input id="dueDate" name="dueDate" placeholder="due date:" type="date" tabindex="6" required>
+            <label for="dueDate">due date: (<i class="editedTask" th:text="${Task.getDueDate()}"></i>)</label>
+            <input id="dueDate" name="dueDate" type="date" tabindex="6">
         </fieldset>
         <fieldset>
+            <input type="hidden" name="id" th:value="${Task.getId()}"/>
             <button name="submit" type="submit" id="button" data-submit="...sending">Submit</button>
         </fieldset>
         <fieldset>
